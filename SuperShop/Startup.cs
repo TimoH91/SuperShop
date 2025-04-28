@@ -32,7 +32,7 @@ namespace SuperShop
 
             services.AddTransient<SeedDb>();
 
-            
+            services.AddScoped<IRepository, MockRepository>();
 
             services.AddControllersWithViews();
         }
