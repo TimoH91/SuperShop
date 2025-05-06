@@ -52,6 +52,10 @@ namespace SuperShop
 
             services.AddScoped<IUserHelper, UserHelper>();
 
+            services.AddScoped<IImageHelper, ImageHelper>();
+
+            services.AddScoped<IConverterHelper, ConverterHelper>();    
+
             services.AddScoped<IProductRepository, ProductRepository>();
 
             //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
