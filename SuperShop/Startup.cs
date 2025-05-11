@@ -49,7 +49,7 @@ namespace SuperShop
                 .AddEntityFrameworkStores<DataContext>();
             ;
 
-            var blobConnectionString = Configuration["Blob:ConnectionString"];
+            //var blobConnectionString = Configuration["Blob:ConnectionString"];
 
             services.AddDbContext<DataContext>(cfg =>
             {
@@ -61,7 +61,7 @@ namespace SuperShop
             services.AddScoped<IUserHelper, UserHelper>();
 
 
-            services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
+            //services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
 
             services.AddScoped<IBlobHelper, BlobHelper>();
 

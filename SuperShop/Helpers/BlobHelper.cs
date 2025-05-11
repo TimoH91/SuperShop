@@ -18,9 +18,9 @@ namespace SuperShop.Helpers
 
         public BlobHelper(IConfiguration configuration)
         {
-            string connectionString = configuration["Blob:ConnectionString"];
-            //string keys = configuration["Blob:ConnectionString"];
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            //string connectionString = configuration["Blob:ConnectionString"];
+            string keys = configuration["Blob:ConnectionString"];
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(keys);
             _blobclient = storageAccount.CreateCloudBlobClient();
         }
 
