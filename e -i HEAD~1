@@ -1,0 +1,73 @@
+[33mcommit c30bb87ac0be0925016d659eee2a5595e7eb9a72[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackup-branch[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Sun May 11 15:15:08 2025 +0100
+
+    BlobHelper and PartialViews
+
+[33mcommit 8a6d6608ecf93d933b7fd8045bcc2f5d7cec1182[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Sun May 11 15:14:39 2025 +0100
+
+    Removed sensitive file and added to .gitignore
+
+[33mcommit 5ea3753b084af3b68162c3c9e9e2cbf3165a5274[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Tue May 6 15:31:35 2025 +0100
+
+    ImageHelper and ConverterHelper
+
+[33mcommit a0369a64f8c9c6cd97ef846f5d85bb0f659e9568[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Mon May 5 18:17:06 2025 +0100
+
+    Add and edit images
+    Images on API Products
+    User on API Products
+
+[33mcommit c62f961506b2cbaf9d0d40cf96fc290537e1a1a4[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Fri May 2 17:46:56 2025 +0100
+
+    Api products controller
+
+[33mcommit 6538f46568cf6ee672b823ae60844e34e4697654[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Mon Apr 28 15:01:19 2025 +0100
+
+    Generic Repository
+
+[33mcommit 3cc5aff036fd11b1c346724c63bd188c82da7ff0[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Mon Apr 28 10:59:59 2025 +0100
+
+    Repository
+
+[33mcommit 0f47eae4e3e5b24d1bb112018fba3193d110b3ea[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Sat Apr 26 16:21:23 2025 +0100
+
+    Seed of database created
+
+[33mcommit e2931d165389c7458475fdadf2fe19325afd2502[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Sat Apr 26 15:12:10 2025 +0100
+
+    Modify products
+
+[33mcommit 00f95130dd63e5b2e44c71b34c40d006624e481f[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Sat Apr 26 10:16:33 2025 +0100
+
+    First Controller
+
+[33mcommit 4c11894610c31254497e38839db18b485cd0e101[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Fri Apr 25 16:03:52 2025 +0100
+
+    Add project files.
+
+[33mcommit 6ce2b0bb5975cbf7bed8f486597d83ec8456e65b[m
+Author: TimoH91 <timothyharris04@gmail.com>
+Date:   Fri Apr 25 16:03:50 2025 +0100
+
+    Add .gitattributes and .gitignore.
