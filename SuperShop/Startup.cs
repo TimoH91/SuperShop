@@ -13,6 +13,13 @@ using Microsoft.Extensions.Hosting;
 using SuperShop.Data;
 using SuperShop.Data.Entities;
 using SuperShop.Helpers;
+using Azure.Identity;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Azure;
+using Azure.Data.Tables;
+using Azure.Storage.Queues;
+using Azure.Storage.Blobs;
+using Azure.Core.Extensions;
 
 namespace SuperShop
 {
@@ -37,24 +44,28 @@ namespace SuperShop
                 cfg.Password.RequireLowercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
                 cfg.Password.RequiredLength = 6;
-   
+
             })
                 .AddEntityFrameworkStores<DataContext>();
-                ;
+            ;
 
+            var blobConnectionString = Configuration["Blob:ConnectionString"];
 
             services.AddDbContext<DataContext>(cfg =>
             {
-            cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
+                cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddTransient<SeedDb>();
 
             services.AddScoped<IUserHelper, UserHelper>();
 
-            services.AddScoped<IImageHelper, ImageHelper>();
 
-            services.AddScoped<IConverterHelper, ConverterHelper>();    
+            services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
+
+            services.AddScoped<IBlobHelper, BlobHelper>();
+
+            services.AddScoped<IConverterHelper, ConverterHelper>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
 

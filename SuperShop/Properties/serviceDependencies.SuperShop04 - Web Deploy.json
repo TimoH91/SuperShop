@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/SuperShop04/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDatabaseConnection_2E3AEA78A0",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/supershopdbservertimo/databases/SuperShop_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DatabaseConnection"
+    },
+    "storage1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/SuperShop04/providers/Microsoft.ServiceLinker/linkers/BlobConnectionString1_8851323DA7, /subscriptions/fbd1d051-c47d-4774-b956-96f96550d40d/resourcegroups/SuperShopResoureGroupEU/providers/Microsoft.Web/sites/SuperShop04/providers/Microsoft.ServiceLinker/linkers/BlobConnectionString1_30ABA766C3",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/supershopsi",
+      "type": "storage.azure",
+      "connectionId": "Blob:ConnectionString1",
+      "dynamicId": null
+    },
+    "storage2": {
+      "ignored": "true",
+      "type": "storage",
+      "connectionId": "Blob:ConnectionString"
+    }
+  }
+}

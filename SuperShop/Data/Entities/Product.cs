@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using static System.Net.WebRequestMethods;
 
 namespace SuperShop.Data.Entities
 {
@@ -9,23 +10,21 @@ namespace SuperShop.Data.Entities
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50, ErrorMessage ="The field {0} cannot contain more than {1} characters length.")]
+        [MaxLength(50, ErrorMessage = "The field {0} cannot contain more than {1} characters length.")]
         public string Name { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public decimal Price { get; set; }
 
-        [Display(Name ="Image")]
-        public string ImageUrl { get; set; }
-
+        [Display(Name = "Image")]
+        public Guid ImageId { get; set; }
 
         [Display(Name = "Last Purchase")]
         public DateTime? LastPurchase { get; set; }
 
-
         [Display(Name = "Last Sale")]
         public DateTime? LastSale { get; set; }
-    
+
         [Display(Name = "Is Available")]
         public bool IsAvailable { get; set; }
 
@@ -34,18 +33,8 @@ namespace SuperShop.Data.Entities
 
         public User User { get; set; }
 
-        public string ImageFullPath
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(ImageUrl))
-                {
-                    return null;
-                }
-
-                return $"https://localhost:44380{ImageUrl.Substring(1)}";
-            }
-          
+        public string ImageFullPath => ImageId == Guid.Empty
+            ? "https://supershop04-dya4b0endqhyc3db.westeurope-01.azurewebsites.net/images/noimage.jpg"
+            : $"https://supershopsi.blob.core.windows.net/products/{ImageId}";
         }
-    }
 }
