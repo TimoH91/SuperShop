@@ -71,6 +71,12 @@ namespace SuperShop
 
             //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAuthorized";
+                options.AccessDeniedPath = "/Account/Not/Authorized";
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -87,6 +93,9 @@ namespace SuperShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
