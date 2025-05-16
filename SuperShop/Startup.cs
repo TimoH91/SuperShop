@@ -68,7 +68,7 @@ namespace SuperShop
             services.AddScoped<IConverterHelper, ConverterHelper>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
-
+            services.AddScoped<IOrderRepository, OrderRepository>();
             //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
 
             services.ConfigureApplicationCookie(options =>
