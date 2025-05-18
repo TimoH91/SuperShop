@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using SuperShop.Data.Entities;
@@ -58,6 +59,19 @@ namespace SuperShop.Data
             await _context.SaveChangesAsync();
         }
 
+        
+        public async Task DeleteDetailTempAsync(int id)
+        {
+            var orderDetailTemp = await _context.OrderDetailTemps.FindAsync(id);
+            if (orderDetailTemp == null) 
+            { 
+                return; 
+            }
+
+            _context.OrderDetailTemps.Remove(orderDetailTemp);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IQueryable<OrderDetailTemp>> GetDetailsTempAsync(string userName)
         {
             var user = await _userHelper.GetUserByEmailAsync(userName);
@@ -102,10 +116,12 @@ namespace SuperShop.Data
                 return;
             }
 
-            orderDetailTemp.Quantity = quantity;
+            orderDetailTemp.Quantity += quantity;
+
             if (orderDetailTemp.Quantity > 0)
             {
                 _context.OrderDetailTemps.Update(orderDetailTemp);
+                await _context.SaveChangesAsync();
             }
         }
     }

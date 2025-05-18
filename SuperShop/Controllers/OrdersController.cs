@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SuperShop.Data;
 using SuperShop.Models;
 
@@ -11,11 +13,13 @@ namespace SuperShop.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IProductRepository _productRepository;
+        private readonly ILogger<OrdersController> _logger;
 
-        public OrdersController(IOrderRepository orderRepository, IProductRepository productRepository)
+        public OrdersController(IOrderRepository orderRepository, IProductRepository productRepository, ILogger<OrdersController> logger)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
@@ -26,12 +30,14 @@ namespace SuperShop.Controllers
 
         public async Task<IActionResult> Create()
         {
+
             var model = await _orderRepository.GetDetailsTempAsync(this.User.Identity.Name);
             return View(model);
         }
 
         public IActionResult AddProduct()
         {
+
             var model = new AddItemViewModel
             {
                 Quantity = 1,
@@ -53,6 +59,41 @@ namespace SuperShop.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> DeleteItem(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            await _orderRepository.DeleteDetailTempAsync(id.Value);
+            return RedirectToAction("Create");
+        }
+
+        public async Task<IActionResult> Increase(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Console.WriteLine($"Increasing item with ID: {id.Value}");
+            _logger.LogInformation("Increasing item with ID: {Id}", id);
+
+            await _orderRepository.ModifyOrderDetailTempQuantityAsync(id.Value, 1);
+            return RedirectToAction("Create");
+        }
+
+        public async Task<IActionResult> Decrease(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            await _orderRepository.ModifyOrderDetailTempQuantityAsync(id.Value, -1);
+            return RedirectToAction("Create");
+        }
 
     }
 }
