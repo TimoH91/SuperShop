@@ -57,18 +57,14 @@ namespace SuperShop
             });
 
             services.AddTransient<SeedDb>();
-
             services.AddScoped<IUserHelper, UserHelper>();
-
-
             //services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
 
             services.AddScoped<IBlobHelper, BlobHelper>();
-
             services.AddScoped<IConverterHelper, ConverterHelper>();
-
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
             //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
 
             services.ConfigureApplicationCookie(options =>
