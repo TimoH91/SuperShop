@@ -13,6 +13,8 @@ using SuperShop.Models;
 
 namespace SuperShop.Controllers
 {
+   
+    
     [Authorize]
     public class ProductsController : Controller
     {

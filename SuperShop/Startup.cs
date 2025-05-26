@@ -20,6 +20,8 @@ using Azure.Data.Tables;
 using Azure.Storage.Queues;
 using Azure.Storage.Blobs;
 using Azure.Core.Extensions;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SuperShop
 {
@@ -46,34 +48,47 @@ namespace SuperShop
                 cfg.Password.RequiredLength = 6;
 
             })
-                .AddEntityFrameworkStores<DataContext>();
-            ;
+                        .AddEntityFrameworkStores<DataContext>();
 
-            //var blobConnectionString = Configuration["Blob:ConnectionString"];
+                    services.AddAuthentication()
+                        .AddCookie()
+                        .AddJwtBearer(cfg =>
+                        {
+                            cfg.TokenValidationParameters = new TokenValidationParameters
+                            {
+                                ValidIssuer = this.Configuration["Tokens:Issuer"],
+                                ValidAudience = this.Configuration["Tokens:Audience"],
+                                IssuerSigningKey = new SymmetricSecurityKey(
+                                    Encoding.UTF8.GetBytes(this.Configuration["Tokens:Key"]))
+                            };
+                        });
 
-            services.AddDbContext<DataContext>(cfg =>
-            {
-                cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
-            });
+                    //var blobConnectionString = Configuration["Blob:ConnectionString"];
 
-            services.AddTransient<SeedDb>();
-            services.AddScoped<IUserHelper, UserHelper>();
-            //services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
+                    services.AddDbContext<DataContext>(cfg =>
+                    {
+                        cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
+                    });
 
-            services.AddScoped<IBlobHelper, BlobHelper>();
-            services.AddScoped<IConverterHelper, ConverterHelper>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<ICountryRepository, CountryRepository>();
-            //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
+                    services.AddTransient<SeedDb>();
+                    services.AddScoped<IUserHelper, UserHelper>();
+                    //services.AddScoped<IBlobHelper>(provider => new BlobHelper(blobConnectionString));
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Account/NotAuthorized";
-                options.AccessDeniedPath = "/Account/Not/Authorized";
-            });
+                    services.AddScoped<IBlobHelper, BlobHelper>();
+                    services.AddScoped<IConverterHelper, ConverterHelper>();
+                    services.AddScoped<IProductRepository, ProductRepository>();
+                    services.AddScoped<IOrderRepository, OrderRepository>();
+                    services.AddScoped<ICountryRepository, CountryRepository>();
+                    //Não temos que adicionar 'usermanager' porque não criamos essa classe, já existe no framework asp.net
 
-            services.AddControllersWithViews();
+                    services.ConfigureApplicationCookie(options =>
+                    {
+                        options.LoginPath = "/Account/NotAuthorized";
+                        options.AccessDeniedPath = "/Account/Not/Authorized";
+                    });
+
+                    services.AddControllersWithViews();
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
