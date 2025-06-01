@@ -10,6 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Prism", "SuperShop.Prism\SuperShop.Prism\SuperShop.Prism.csproj", "{21FB427B-3538-4AEC-A352-C86AB5790711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Prism.Android", "SuperShop.Prism\SuperShop.Prism.Android\SuperShop.Prism.Android.csproj", "{6EB0E33A-9187-4F4E-8456-A474BB3F132F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Prism.iOS", "SuperShop.Prism\SuperShop.Prism.iOS\SuperShop.Prism.iOS.csproj", "{B16BB3D2-34C0-4E40-8801-AF1D7C7E5AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +26,20 @@ Global
 		{3F38293E-BCD0-45A2-9DC8-0817550E43ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F38293E-BCD0-45A2-9DC8-0817550E43ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F38293E-BCD0-45A2-9DC8-0817550E43ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21FB427B-3538-4AEC-A352-C86AB5790711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21FB427B-3538-4AEC-A352-C86AB5790711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21FB427B-3538-4AEC-A352-C86AB5790711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21FB427B-3538-4AEC-A352-C86AB5790711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB0E33A-9187-4F4E-8456-A474BB3F132F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B16BB3D2-34C0-4E40-8801-AF1D7C7E5AE0}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{B16BB3D2-34C0-4E40-8801-AF1D7C7E5AE0}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{B16BB3D2-34C0-4E40-8801-AF1D7C7E5AE0}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{B16BB3D2-34C0-4E40-8801-AF1D7C7E5AE0}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
